@@ -106,21 +106,23 @@ if os.environ.get('DJANGO_ENV') == 'production':
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
 else:
+   # DATABASES = {
+    #  'default': {
+    #  'ENGINE': 'django.db.backends.sqlite3',
+    #  'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    #}
     DATABASES = {
       'default': {
-      'ENGINE': 'django.db.backends.sqlite3',
-      'NAME': BASE_DIR / 'db.sqlite3',
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME': 'django_prd',
+          'USER': 'sqluser',
+          'PASSWORD': 'Univesp.2024',
+          'HOST': 'localhost',
+          'PORT': '3306',
      }
     }
-   #DATABASES = {
-    #'default': {
-     #   'ENGINE': 'django.db.backends.mysql',
-      #  'NAME': 'django',
-       # 'USER': 'root',
-        #'HOST': 'localhost',
-       # 'PORT': '3306',
-   # }
-#}
+
 
 
 # Password validation
