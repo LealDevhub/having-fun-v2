@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="w-full flex justify-between items-center py-3 px-4 fixed z-50">
+  <div class="w-6/12">
+    <a href="/">
+      <img
+        class="w-2/12 rounded-circle"
+        src="{% static 'images/logo1.jpeg' %}"
+      />
+    </a>
+  </div>
+
+  <div class="w-6/12 flex flex-nowrap justify-end">
+    {% if user.is_authenticated %}
+    <div class="mr-2">
+      <form method="get" action="{% url 'aula:pesquisaaula' %}">
+        <input
+          type="text"
+          class="py-1 px-2 rounded-md text-black"
+          name="query"
+          value="{{ request.GET.query }}"
+          placeholder="Pesquisar..."
+        />
+        <input type="submit" value="" />
+      </form>
+    </div>
+    {% endif %}
+    <div class="mr-2">
+      {% if user.is_authenticated %}
+      <form method="post" action="{% url 'aula:logout' %}">
+        {% csrf_token %}
+        <button
+          type="submit"
+          class="bg-blue-600 text-white py-1 px-3 rounded-md"
+        >
+          Sair
+        </button>
+      </form>
+      {% else %}
+      <a href="{% url 'aula:login' %}">
+        <button class="bg-blue-600 text-white py-1 px-3 rounded-md">
+          Login
+        </button>
+      </a>
+      {% endif %}
+    </div>
+  
+  </div>
+</nav>
