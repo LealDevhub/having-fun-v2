@@ -1,3 +1,48 @@
+Linux Ubuntu 24_04-lts
+Atualizar os repositórios:
+apt update && upgrade -y
+
+
+Instalação do MySQL 
+
+Instalação banco de dados MySQL
+Comando: apt install mysql-server -y
+comando para habilitar e iniciar: systemctl enable mysql && systemctl start mysql
+comando para verificar o status: systemctl status mysql
+
+Criação de usuário no banco de dados:
+acesso de root:
+
+Comandos no mysql:
+# mysql -uroot -p
+# password: sua senha root
+mysql> CREATE USER 'sqluser'@'%' IDENTIFIED BY 'Univesp.2024';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+
+Comandos no mysql:
+# mysql -uroot -p
+# password: univesp
+mysql> CREATE USER 'sqluser'@'%' IDENTIFIED BY 'Univesp.2024';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+mysql> CREATE USER 'sqluser'@'localhost' IDENTIFIED BY 'Univesp.2024';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'sqluser'@'localhost' WITH GRANT OPTION;
+mysql> FLUSH PRIVILEGES;
+mysql> quit;
+# mysql -u sqluser -p
+# password: Univesp.2024
+
+mysql> CREATE DATABASE django_prd;
+mysql> USE django_prd;
+
+Instalação do APACHE?
+Comando: apt install apache2 -y
+comando para habilitar e iniciar: systemctl enable apache2 && systemctl start apache2
+comando para verificar o status: systemctl status apache2
+
+
+
+
+
 BAIXAR O PROJETO, PARA RODAR NA MÁQUINA LOCAL E FAZER MUDANÇAS NO PROJETO 
 DEVERÁ IR EM SETTINGS.PY NA LINHA 26 MUDAR DEBUG = TRUE PARA DEBUG = FALSE
 
