@@ -1,84 +1,41 @@
-{% extends 'base.html' %} {% load static %} {% block titulo %} Homepage Havingfun
-{% endblock %} {% block head %}
-<style>
-  #id_email {
-    width: 100%;
-    color: #000000;
-    padding: 5px 5px;
-  }
-</style>
-{% endblock %} {% block content %}
-<header
-  class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat img-fluid bg-cover"
-  style="background-image: url('{% static 'images/background_havingfun.jpeg' %}')"
->
-  <div
-    class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col"
-  >
-    <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center">
-      O Melhor ensino de inglês Having Fun, em um só lugar.
-    </h1>
-    <h3 class="text-xl md:text-xl py-5">
-      Assista onde quiser. Acompanhe o seu progresso.
-    </h3>
-    <h4 class="text-sm md:text-lg pb-3">Quer começar? Clique abaixo.</h4>
+{% load static %}
 
-    <div class="w-full flex justify-center">
-      <div class="flex justify-center items-center w-11/12 md:w-10/12">
-        <a
-          href="/criarconta/"
-          class="bg-blue-600 font-medium md:font-normal flex justify-center items-center py-2 px-3 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl text-white rounded-md"
-          >Solicite seu primeiro acesso</a
-        >
-      </div>
-    </div>
-  </div>
-</header>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda Inglês se Divertindo</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 
-<section
-  class="flex flex-col md:flex-row items-center border-gray-900 border-b-8"
-  style="min-height: 70vh"
->
-  <div
-    class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10"
-  >
-    <h2 class="md:text-5xl text-4xl font-semibold mb-4">
-      Assista suas vídeoaulas em sua TV.
-    </h2>
-    <h5 class="md:text-xl text-lg">
-      Assista em Smart TVs, Playstation, Xbox, Chromecast, e muito mais.
-    </h5>
-  </div>
-  <div class="md:w-1/2 flex justify-center items-center">
-    <img src="{% static 'images/tv.png' %}" class="w-8/12" alt="" />
-  </div>
-</section>
-
-<section
-  class="flex flex-col md:flex-row items-center border-gray-900 border-b-8"
-  style="min-height: 70vh"
->
-  <div
-    class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10"
-  >
-    <h2 class="md:text-5xl text-4xl font-semibold mb-4">
-      Acompanhe o progresso de suas crianças.
-    </h2>
-    <h5 class="md:text-xl text-lg">
-      Alfabetização bilíngue a partir dos 4 anos de idade. Aulas lúdicas e
-      práticas.
-    </h5>
-  </div>
-  <div class="md:w-1/2 flex justify-center items-center">
-    <img src="{% static 'images/havingfun_kid.png' %}" class="w-8/12" alt="" />
-  </div>
-</section>
-<footer class="px-5 py-10">
-  <ul class="flex justify-between items-center">
-    <li>&copy; 2024</li>
-    <li>Feito com Python (Django)</li>
-    <li>Having Fun</li>
-  </ul>
-</footer>
-
-{% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo1 1.png' %}" alt="Logo Having Fun">
+        </div>
+        <div class="buttons">
+            <a href="/criarconta/" class="btn-secondary">
+                Cadastre-se
+                <img src="{% static 'images/copy 1.svg' %}" alt="Ícone de cadastro">
+            </a>
+            <a href="{% url 'aula:login' %}" class="btn-primary">
+                <img src="{% static 'images/users 1.svg' %}" alt="Ícone de usuários"> 
+                Login                               
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="content">
+            <h1>Aprenda inglês se <span class="highlight">divertindo</span> de verdade!</h1>
+            <p>Venha para a Having Fun! Aqui, aprender inglês é uma jornada divertida, interativa e transformadora. Experimente uma aula grátis!</p>
+        </section>
+        <section class="illustration">
+            <img src="{% static 'images/Study-abroad-pana.svg' %}" alt="Ilustração de estudante viajando">
+        </section>
+    </main>
+</body>
+</html>
