@@ -2,7 +2,7 @@
 
 O sistema de acesso a cursos por assinatura para o ensino de inglês para crianças, desde o nível iniciante até o nível avançado.
 
-![Having Fun](media/thumb_filmes/having-fun.png)
+![Having Fun](media/thumb_aulas/having-fun.png)
 
 ---
 
