@@ -94,13 +94,11 @@ main {
     position: absolute;
     right: -150px;
     bottom: -42px;
-
-    display: flex;
-    justify-content: center;
 }
 
-.illustration .img {
+.illustration img {
     max-width: 100%;
+    height: auto;
     width: 600px;
 }
 
@@ -128,7 +126,7 @@ main {
         position: initial;
     }
 
-    .illustration .img {
+    .illustration img {
         width: 80%;
     }
 }
@@ -142,7 +140,7 @@ main {
         flex-direction: column;
     }
 
-    .illustration .img {
+    .illustration img {
         width: 70%;
     }
 }
