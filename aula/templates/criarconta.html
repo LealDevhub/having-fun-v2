@@ -1,71 +1,318 @@
-{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {%
-block titulo %} Criar Conta {% block content %}
+{% load static %}
 
-<header
-  class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat bg-cover"
-  style="background-image: url('{% static 'images/background_havingfun.jpeg' %}')"
->
-  <div
-    class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col"
-  >
-    <!--<form method="post">
-      {% csrf_token %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4">
-          Solicite seu acesso para continuar
-        </legend>
-        {{ form|crispy }}
-      </fieldset>
-      <button
-        class="bg-red-600 py-1 px-3 text-white w-full md:text-lg rounded-md"
-        type="submit"
-      >
-        Criar Conta
-      </button>
-    </form>-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta</title>
 
-    <form class="row g-3 px-4">
-      <div class="col-md-4">
-        <label for="validationDefault01" class="form-label">Primeiro Nome</label>
-        <input type="text" class="form-control" id="validationDefault01" value="Cleiton" required>
-      </div>
-      <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Sobrenome</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Ferreira" required>
-      </div>
-      <div class="col-md-4">
-        <label for="validationDefaultUsername" class="form-label">Nome de usuário</label>
-        <div class="input-group">
-          <span class="input-group-text" id="inputGroupPrepend2">@</span>
-          <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <label for="validationDefault03" class="form-label">Cidade</label>
-        <input type="text" class="form-control" id="validationDefault03" required>
-      </div>
-      <div class="col-md-3">
-        <label for="validationDefault04" class="form-label">Estado</label>
-        <input type="text" class="form-control" id="validationDefault04" required>
-      </div>
-      <div class="col-md-3">
-        <label for="validationDefault05" class="form-label">CEP</label>
-        <input type="text" class="form-control" id="validationDefault05" required>
-      </div>
-      
-      <div class="col-12">
-        <button class="btn btn-primary" type="button" onclick="createUrl()">Solicitar Acesso</button>
-      </div>
-    </form>
-  </div>
-</header>
+    <link rel="stylesheet" href="{% static 'css/criarconta/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
-<footer class="px-5 py-10">
-  <ul class="flex justify-between items-center">
-    <li>&copy; 2024</li>
-    <li>Feito com Python (Django)</li>
-    <li>Having Fun</li>
-  </ul>
-</footer>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-{% endblock %}
+
+
+</head>
+<body>
+    <div id="app">
+        <main>
+            <div class="main-container">
+                <a href="/homepage/" class="back" style="text-decoration: none;">
+                    <img src="{% static 'images/arrow-left-02.svg' %}" alt="Ícone de voltar">
+                    <span>Voltar</span>
+                </a>
+
+                
+
+                <h2>Formulário de Matricula</h2>
+                <p>Preencha os dados abaixo para matricula em nossa plataforma de ensino Having Fun.</p>
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    <fieldset class="child-info">
+                        <legend>Informações da criança</legend>
+
+                        <div class="input-wrapper">
+                            <label for="fullname">Nome completo</label>
+                            <input type="text" name="fullname" id="fullname">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="birth">Data de nascimento</label>
+                            <input type="text" placeholder="Selecione sua data de nascimento" name="birth" id="datepicker" lang="pt-BR">
+                        </div>
+
+                        <div class="select-wrapper">
+                            <label for="gender">Sexo</label>
+                            <select name="gender" id="gender">
+                                <option value="female">Feminino</option>
+                                <option value="male">Masculino</option>
+                                <option value="na">Prefiro não informar</option>
+                            </select>
+                        </div>
+
+                        <div class="droparea-wrapper">
+                            <label for="birth-file">Documento(RG)</label>
+                            <div class="dropzone">
+                                <input 
+                                type="file" 
+                                name="birth-file" 
+                                id="birth-file"
+                                accept=".doc, .docx, .pdf">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M34.9552 18.0221C34.97 18.022 34.985 18.022 35 18.022C39.9706 18.022 44 22.0588 44 27.0386C44 31.6796 40.5 35.5016 36 36M34.9552 18.0221C34.9848 17.6921 35 17.3579 35 17.0202C35 10.9339 30.0752 6 24 6C18.2465 6 13.5247 10.4253 13.0408 16.0638M34.9552 18.0221C34.7506 20.2952 33.8572 22.3692 32.4856 24.033M13.0408 16.0638C7.96796 16.5475 4 20.8278 4 26.0366C4 30.8834 7.43552 34.9264 12 35.8546M13.0408 16.0638C13.3565 16.0337 13.6765 16.0183 14 16.0183C16.2516 16.0183 18.3295 16.7639 20.001 18.022" stroke="#D6D3D1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M24 26V42M24 26C22.5996 26 19.9831 29.9886 19 31M24 26C25.4004 26 28.017 29.9886 29 31" stroke="#D6D3D1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    
+                                <p>Clique aqui para selecionar arquivos</p>
+                            </div>
+                            
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="address">
+                        <legend>Endereço residêncial</legend>
+
+                        <span id="message"></span>
+                        <div class="input-wrapper">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" name="cep" value="01234-567">
+                        </div>
+                        <div class="flex">
+                            <div class="input-wrapper flex-2">
+                                <label for="street">Rua</label>
+                                <input type="text" id="street" name="rua" disabled value="Rua das Flores">
+                            </div>
+                            <div class="input-wrapper flex-1">
+                                <label for="number">Número</label>
+                                <input type="number" name="numero" id="number" value="123">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="input-wrapper flex-2">
+                                <label for="city">Cidade</label>
+                                <input type="text" id="city" name="cidade" disabled value="São Paulo">
+                            </div>
+                            <div class="input-wrapper flex-1">
+                                <label for="state">Estado</label>
+                                <input type="text" name="estado" id="state" disabled value="SP">
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset class="guardian">
+                        <legend>Informações do responsável</legend>
+
+                        <div class="input-wrapper">
+                            <label for="guardian">Nome do responsável</label>
+                            <input type="text" name="guardian" id="guardian">
+                            <small>Principal responsável legal e contato de emergência</small>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" name="phone" id="phone">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" required>
+                            <div class="error">
+                                <img src="{% static 'images/alert-circle.svg' %}" alt="Ícone de alerta">
+                                <small>Insira um e-mail válido</small>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="enroll-options">
+                        <legend>Opções de matrícula</legend>
+
+                        <div class="input-wrapper study-shift">
+                            <label>Selecione o turno de estudo</label>
+
+                            <div class="radio-wrapper">
+                                <div class="radio-inner">
+                                    <div class="radio-image"></div>
+                                    <input type="radio" name="study-shift" id="morning" value="morning" checked>
+                                    <img src="{% static 'images/sun-cloud-02.svg' %}" alt="Ícone de sol com núvem">
+                                    <label for="morning">Manhã</label>
+                                </div>
+                                <div class="radio-inner">
+                                    <div class="radio-image"></div>
+                                    <input type="radio" name="study-shift" id="evening" value="evening">
+                                    <img src="{% static 'images/sun-02.svg' %}" alt="Ícone de sol">
+                                    <label for="evening">Tarde</label>
+                                </div>
+                                <div class="radio-inner">
+                                    <div class="radio-image"></div>
+                                    <input type="radio" name="study-shift" id="night" value="night">
+                                    <img src="{% static 'images/moon-cloud-stroke-rounded 1.svg' %}" alt="Ícone de Noite">
+                                    <label for="evening">Noite</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-wrapper periods">
+                            <label>Em qual horário você gostaria?</label>
+
+                            <div class="morning-radios">
+                                <div class="radio-wrapper">
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" value="nine">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 1.svg' %}" alt="Ícone de Relógio Smart Roxo">
+                                        <label for="nine">09h</label>
+                                    </div>
+    
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="ten" value="ten">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 2.svg' %}" alt="Ícone de Relógio Smart Laranja">
+                                        <label for="ten">10h</label>
+                                    </div>
+    
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="eleven" value="eleven">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 3.svg' %}" alt="Ícone de Relógio Smart Cinza">
+                                        <label for="eleven">11h</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="evening-radios">
+                                <div class="radio-wrapper">
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="thirteen" value="thirteen">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 1.svg' %}" alt="Ícone de Relógio Smart Roxo">
+                                        <label for="thirtenn">13h</label>
+                                    </div>
+    
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="fourteen" value="fourteen">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 2.svg' %}" alt="Ícone de Relógio Smart Laranja">
+                                        <label for="fourteen">14h</label>
+                                    </div>
+    
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="fifteen" value="fifteen">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 3.svg' %}" alt="Ícone de Relógio Smart Cinza">
+                                        <label for="fifteen">15h</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="night-radios">
+                                <div class="radio-wrapper">
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="seventeen" value="seventeen">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 1.svg' %}" alt="Ícone de Relógio Smart Roxo">
+                                        <label for="seventeen">17h</label>
+                                    </div>
+    
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="eighteen" value="eighteen">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 2.svg' %}" alt="Ícone de Relógio Smart Laranja">
+                                        <label for="eighteen">18h</label>
+                                    </div>
+    
+                                    <div class="radio-inner">
+                                        <div class="radio-image"></div>
+                                        <input type="radio" name="time" id="nineteen" value="nineteen">
+                                        <img src="{% static 'images/smart-watch-03-stroke-rounded 3.svg' %}" alt="Ícone de Relógio Smart Cinza">
+                                        <label for="nineteen">19h</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label>Qual será a forma de pagamento?</label>
+
+                            <div class="radio-wrapper">
+                                <div class="radio-inner">
+                                    <div class="radio-image"></div>
+                                    <input type="radio" name="payment" id="pix" value="pix">
+                                    <img src="{% static 'images/pix-svgrepo-com 1.svg' %}" alt="Ícone do PIX">
+                                    <label for="nine">PIX</label>
+                                </div>
+
+                                <div class="radio-inner">
+                                    <div class="radio-image"></div>
+                                    <input type="radio" name="payment" id="credit-card" value="credit-card">
+                                    <img src="{% static 'images/credit-card-stroke-rounded 1.svg' %}" alt="Ícone de Cartão de Crédito de cor verde">
+                                    <label for="ten">Cartão</label>
+                                </div>
+
+                                <div class="radio-inner">
+                                    <div class="radio-image"></div>
+                                    <input type="radio" name="payment" id="ticket" value="ticket">
+                                    <img src="{% static 'images/barcode 1.svg' %}" alt="Ícone de um código de barras de boleto, de cor preta">
+                                    <label for="eleven">Boleto</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="terms-wrapper input-wrapper checkbox-wrapper">
+                        <div class="checkbox-image"></div>
+                        <input type="checkbox" name="terms" id="terms">
+                        <label for="terms">Declaro que li e concordo com os <strong>Termos e Condições</strong> e com a <strong>Política de Privacidade</strong> da escola Estrela do Amanhã. </label>
+                    </div>
+
+                    <div class="actions-wrapper">
+                        <button class="btn-secondary" type="button">Salvar respostas</button>
+                        <button class="btn-primary">Fazer matricula</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <aside>
+            <div class="aside-container">
+                <img class="logo" src="{% static 'images/logo1 1.png' %}" alt="Logo de Estrelas do amanhã">
+                <h1>Porque cada momento de <span>aprendizado</span> conta</h1>
+                <p>Inscreva seu filho em nossa escola e veja-o florescer em um ambiente acolhedor, seguro e estimulante.</p>
+                <img class="illustration" src="{% static 'images/Illustration.svg' %}" alt="Ilustração">
+            </div>
+        </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+    <script>
+        var picker = new Pikaday({ 
+            field: document.getElementById('datepicker'),
+            format: 'D/M/YYYY',
+                toString(date, format) {
+                // you should do formatting based on the passed format,
+                // but we will just return 'D/M/YYYY' for simplicity
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+                return `${day}/${month}/${year}`;
+            }
+         });
+
+        const input = document.querySelector("#datepicker");
+
+         
+        input.addEventListener("keypress", function(e) {
+            
+            e.preventDefault();
+    
+        })
+    </script>
+
+    <script src="{% static  'js/study-shifts.js' %}"></script>
+    <script src="{% static 'js/viacep.js' %}"></script>
+</body>
+</html>
