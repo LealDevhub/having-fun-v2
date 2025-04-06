@@ -13,6 +13,7 @@ O sistema de acesso a cursos por assinatura para o ensino de inglês para crian�
 - **Node.js**: Utilizado para gerenciar as dependências do Frontend.
 - **TailwindCSS**: Framework CSS para estilização.
 - **Bootstrap**: Framework CSS adicional para layout e responsividade.
+- **API ViaCEP**: Utilizada para consulta de endereços a partir do CEP, facilitando o preenchimento automático de formulários.
 
 ### Bibliotecas Python Utilizadas
 
