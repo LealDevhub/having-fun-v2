@@ -57,21 +57,26 @@ input{
     }
 
     &:invalid {
-        border: 2px solid var(--semantic-error);
+        border: 2px solid var(--stroke-default);
     }
 
-    &[required] + .error {
-        display: flex;
-        align-items: center;
-        gap: .25rem;
+    &[required] {
+        border-color: var(--stroke-default);
 
-        font: var(--text-sm);
-        color: var(--semantic-error);
-
-        margin-top: .25rem;
     }
-
+    
     &:not(:focus):valid + .error {
         display: none;
     }
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+
+    font: var(--text-sm);
+    color: var(--semantic-error);
+
+    margin-top: .25rem;
 }
