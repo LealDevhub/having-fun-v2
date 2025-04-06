@@ -148,8 +148,8 @@ python manage.py runserver
 ```
 Agora, o projeto estará rodando localmente em [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
-#💡 Contribuição
+# 💡 Contribuição
 Fique à vontade para contribuir com melhorias! Basta abrir uma issue ou fazer um pull request.
 
-#📜 Licença
+# 📜 Licença
 Este projeto foi desenvolvido pelos alunos da UNIVESP - DRP14-PJI110-SALA-006GRUPO-004 ❤️ e está disponível para fins acadêmicos e educacionais.
