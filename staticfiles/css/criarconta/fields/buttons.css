@@ -1,0 +1,36 @@
+
+.actions-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    justify-content: end;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+}
+
+.btn-primary {
+    color: var(--surface-primary);
+    background-color: #E43A12;
+    border: 1px solid var(--text-highlight);
+
+    &:hover {
+        background-color: #F3541C;
+    }
+}
+
+.btn-secondary {
+    color: var(--text-highlight);
+    border: 1px solid var(--text-highlight);
+
+    &:hover {
+        outline: .25rem solid var(--surface-secondary);
+        border: 1px solid var(--stroke-highlight);
+        outline-offset: .1px;
+    }
+}

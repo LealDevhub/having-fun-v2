@@ -1,0 +1,135 @@
+#app {
+    display: grid;
+    grid-template-columns: 51.25% 48.75%;
+
+    height: 100vh;
+    overflow: hidden;
+}
+
+main, aside {
+    padding-block: 2rem;
+    padding-inline: 4rem;
+}
+
+main {
+    overflow: auto;
+    
+    & .main-container {
+        max-width: 33rem;
+        margin-left: auto;
+    }
+
+    & .back {
+        color: #57534E;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font: 400 1rem/150% var(--font-family);
+        margin-bottom: 1.5rem
+    }
+    
+    & h2 {
+        font: 600 1.5rem/125% var(--font-family);
+        margin-bottom: .5rem;
+    }
+    
+    & p {
+        color: var(--text-secondary);
+    }
+}    
+    
+aside {
+    background-color: var(--surface-secondary);
+    overflow: hidden;
+
+
+    & .aside-container {
+        max-width: 31rem;
+        margin-right: auto;
+
+        text-align: center;
+
+        & img.logo {
+           width: 100px;
+           height: 100px; 
+        }
+
+        & h1 {
+            margin-block: .5rem;
+            font: 600 2.5rem/1.25 var(--font-family);
+            span {
+                color: #17EAFF;
+            }
+        }
+
+        & p {
+            margin-bottom: 2rem;
+        }
+
+        
+    }
+        
+}
+
+@media (max-width: 1200px) {
+    body {
+        overflow: auto;
+    }
+
+    #app {
+        display: flex;
+        flex-direction: column-reverse;
+
+        height: 100%;
+    }
+
+    main , aside {
+       overflow: hidden;
+    }
+
+    main .main-container, aside .aside-container {
+        margin-inline: auto;
+    }
+
+    main {
+        .actions-wrapper {
+            flex-direction: column;
+
+            & button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    aside {
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & .aside-container {
+
+            & h1 {
+                font-size: 2rem;
+            }
+
+            & img.illustration {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-height: 650px) {
+    aside {
+
+        & .aside-container {
+
+            & img.illustration {
+                width: 65%;
+            }
+        }
+    }
+}
