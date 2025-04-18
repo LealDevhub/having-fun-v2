@@ -1,140 +1,127 @@
-{% extends 'base.html' %} {% load static %} {% block titulo %} HomeAulas
-Havingfun {% endblock %} {% block head %}
-<style>
-  $itemGrow: 1.2;
-  $duration: 250ms;
+{% load static %}
 
-  html {
-    scroll-behavior: smooth;
-  }
+<!DOCTYPE html>
+<html lang="pt-br">
 
-  body {
-    margin: 0;
-    background-color: #000;
-  }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sidebar</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard/main.css' %}">
 
-  h1 {
-    font-family: Arial;
-    color: red;
-    text-align: center;
-  }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 100%);
-    overflow: hidden;
-    scroll-behavior: smooth;
+        <style>
+          html,
+          body {
+            position: relative;
+            height: 100%;
+          }
+      
+          swiper-container {
+            width: 240px;
+            height: 320px;
+            margin-inline:0 ;
+          }
+      
+          swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-radius: 18px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+          }
+      
+          swiper-slide:nth-child(1n) .card {
+            background-color: rgb(206, 17, 17);
+          }
+      
+          swiper-slide:nth-child(2n) .card {
+            background-color: rgb(0, 140, 255);
+          }
+      
+          swiper-slide:nth-child(3n) .card  {
+            background-color: rgb(10, 184, 111);
+          }
+      
+          swiper-slide:nth-child(4n) .card {
+            background-color: rgb(211, 122, 7);
+          }
+        </style>
 
-    section {
-      width: 100%;
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(5, auto);
-      margin: 20px 0;
+</head>
 
-      .item {
-        padding: 0 2px;
-        transition: $duration all;
-
-        &:hover {
-          margin: 0 40px;
-          transform: scale(1.2);
-        }
-      }
-
-      a {
-        position: absolute;
-        color: #fff;
-        text-decoration: none;
-        font-size: 6em;
-        background: rgb(0, 0, 0);
-        width: 80px;
-        padding: 20px;
-        text-align: center;
-        z-index: 1;
-
-        &:nth-of-type(1) {
-          top: 0;
-          bottom: 0;
-          left: 0;
-          background: linear-gradient(
-            -90deg,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 100%
-          );
-        }
-        &:nth-of-type(2) {
-          top: 0;
-          bottom: 0;
-          right: 0;
-          background: linear-gradient(
-            90deg,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 100%
-          );
-        }
-      }
-    }
-  }
-
-  // Remove the arrow for Mobile
-  @media only screen and (max-width: 600px) {
-    a.arrow__btn {
-      display: none;
-    }
-  }
-</style>
-{% endblock %} {% block content %}
-
-<main class="bg-primary_black min-h-screen w-full">
-  <section
-    class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover bg-center"
-    style="background-image: url('{{ aula_destaque.thumb.url }}');"
-  >
-    <div>
-      <h2 class="text-6xl font-semibold text-white my-4">
-        {{ aula_destaque.titulo }}
-      </h2>
-      <p class="w-11/12 md:w-5/12 font-medium text-white my-4">
-        {{ aula_destaque.descricao }}
-      </p>
-      <div class="flex my-4">
-  {% if aula_destaque %}    
-          <a href="{% url 'aula:detalhesaula' aula_destaque.pk %}">
-     <!-- botão -->
-  </a>
-  {% else %}
-    <!-- exibe uma mensagem de erro ou um botão de fallback -->
-  {% endif %}
-    <button
-    class="flex items-center bg-white py-2 px-5 rounded-md"
-    style="color: black"
-  >
-    <ion-icon name="play" class="text-2xl"></ion-icon>
-    <span class="ml-3 font-medium"> Play </span>
-  </button>
-        </a>
-       
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-primary_black flex justify-center py-10">
-    <div class="p-8 w-10/12 relative">
-      <h2 class="text-gray-200 text-2xl font-medium">Categorias</h2>
-      <div class="flex flex-wrap items-center min-w-full movie_lis">
-        {% for aula in lista_aulas_recentes %}
-        <div
-          class="m-4 bg-blue-500 overflow-hidden flex-shrink-0 rounded-md cursor-pointers w-96"
-        >
-          <a href="{% url 'aula:detalhesaula' aula.pk %}">
-            <img src="{{ aula.thumb.url }}" class="d-block w-full" alt="" />
-          </a>
+<body>
+    <div class="sidebar">
+        <div class="menu-icon">
+            <img src="{% static 'images/logo1 1.png' %}" id="logo" alt="Logo">
+            <img src="{% static 'images/menu.svg' %}" id="menu" alt="Menu">
         </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-</main>
+        <div class="nav-icons">
+            <div class="icon" id="search"><img src="{% static 'images/search.svg' %}" alt="Search"></div>
+            <div class="icon" id="grid"><img src="{% static 'images/grid.svg' %}" alt="Dashboard"></div>
+            <div class="icon" id="user"><img src="{% static 'images/user.svg' %}" alt="Users"></div>
+            <div class="icon" id="settings"><img src="{% static 'images/settings.svg' %}" alt="Settings"></div>
 
-{% endblock %}
+
+            <div class="active"></div>
+        </div>
+        <div class="logout-icon">
+            <img src="{% static 'images/log-out.svg' %}" alt="Logout">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>Dashboard</h1>
+
+        <div id="menu-sidebar">
+            <img src=" {% static 'images/menu.svg' %}" alt="Menu">
+        </div>
+
+        <section id="conteudos">
+          <h2>Conteúdos</h2>
+          <p>Arraste para o lado</p>
+          <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+            <swiper-slide>
+              <div class="card">
+                <div class="card_load_extreme_title"></div>
+                <div class="card_load_extreme_descripion"></div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="card">
+                <div class="card_load_extreme_title"></div>
+                <div class="card_load_extreme_descripion"></div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="card">
+                <div class="card_load_extreme_title"></div>
+                <div class="card_load_extreme_descripion"></div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="card">
+                <div class="card_load_extreme_title"></div>
+                <div class="card_load_extreme_descripion"></div>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </section>
+        <section id="calendar">
+          <h2>Cronograma de estudos</h2>
+          <iframe src="https://calendar.google.com/calendar/embed?src=fabriciopereiraleal2021%40gmail.com&ctz=America%2FSao_Paulo" style="border: 0" width="80%" frameborder="0" scrolling="no"></iframe>
+        </section>
+    </div>
+
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+</body>
+
+</html>

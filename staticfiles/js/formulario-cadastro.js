@@ -1,32 +1,23 @@
-let tel = '+5511983510940'
-let message = ''
-let wppUrl = ''
+async function sendMail() {
+  let params = {
+    fullname : document.getElementById('fullname').value,
+    birth : document.getElementById('datepicker').value,
+    gender : document.getElementById('gender').value,
+    cep : document.getElementById('cep').value,
+    street : document.getElementById('street').value,
+    number : document.getElementById('number').value,
+    city : document.getElementById('city').value,
+    state : document.getElementById('state').value,
+    guardian : document.getElementById('guardian').value,
+    phone : document.getElementById('phone').value,
+    email : document.getElementById('email').value,
+    study_shift : document.querySelector('input[name="study-shift"]:checked').value,
+    time : document.querySelector('input[name="time"]:checked').value,
+    payment : document.querySelector('input[name="payment"]:checked').value
+  }
 
-function createUrl() {
-  var primeiro_nome = document.querySelector("#validationDefault01").value
-  var sobrenome = document.querySelector("#validationDefault02").value
-  var usuario = document.querySelector("#validationDefaultUsername").value
-  var cidade = document.querySelector("#validationDefault03").value
-  var estado = document.querySelector("#validationDefault04").value
-  var cep = document.querySelector("#validationDefault05").value
+  await emailjs.send('service_d20g404', 'template_ogmo67k', params).then(console.log('Ok'))
+  
+  await window.location.replace("/");
 
-
-  message = `*Primeiro Nome*: ${primeiro_nome},
-             *Sobrenome*: ${sobrenome},
-             *Nome de Usuário*: ${usuario},
-             *Cidade*: ${cidade},
-             *Estado*: ${estado},
-             *Cep*: ${cep},
-             `
-
-  var messageUri = encodeURI(message)
-  wppUrl =
-    'https://api.whatsapp.com/send?phone=' + tel + '&text=' + messageUri
-
-  var a = document.createElement('a')
-
-  a.href = wppUrl
-  a.target = '_blank'
-
-  a.click()
 }
