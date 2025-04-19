@@ -1,28 +1,26 @@
-const search = document.querySelector("#search")
-const grid = document.querySelector("#grid")
-const pet = document.querySelector("#pet")
-const user = document.querySelector("#user")
-const vet = document.querySelector("#vet")
-const settings = document.querySelector("#settings")
+const conteudos = document.querySelector("#content")
+const cronograma = document.querySelector("#calendar")
+const perfil = document.querySelector("#user")
+const configuracoes = document.querySelector("#settings")
 const active = document.querySelector(".active")
 const sidebar = document.querySelector(".sidebar")
 
 const menu_sidebar = document.querySelector("#menu-sidebar")
 
 
-search.addEventListener("click", () => {
+conteudos.addEventListener("click", () => {
     active.style.top = "0"
 })
 
-grid.addEventListener("click", () => {
+cronograma.addEventListener("click", () => {
     active.style.top = "54px"
 })
 
-user.addEventListener("click", () => {
+perfil.addEventListener("click", () => {
     active.style.top = "108px"
 })
 
-settings.addEventListener("click", () => {
+configuracoes.addEventListener("click", () => {
     active.style.top = "162px"
 })
 

@@ -1,34 +1,26 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Sidebar</title>
     <link rel="stylesheet" href="{% static 'css/dashboard/main.css' %}">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-        <style>
-          html,
-          body {
+    <style>
+        html, body {
             position: relative;
             height: 100%;
-          }
-      
-          swiper-container {
+        }
+        swiper-container {
             width: 240px;
             height: 320px;
-            margin-inline:0 ;
-          }
-      
-          swiper-slide {
+            margin-inline: 0;
+        }
+        swiper-slide {
             display: flex;
             align-items: center;
             justify-content: start;
@@ -36,27 +28,13 @@
             font-size: 22px;
             font-weight: bold;
             color: #fff;
-          }
-      
-          swiper-slide:nth-child(1n) .card {
-            background-color: rgb(206, 17, 17);
-          }
-      
-          swiper-slide:nth-child(2n) .card {
-            background-color: rgb(0, 140, 255);
-          }
-      
-          swiper-slide:nth-child(3n) .card  {
-            background-color: rgb(10, 184, 111);
-          }
-      
-          swiper-slide:nth-child(4n) .card {
-            background-color: rgb(211, 122, 7);
-          }
-        </style>
-
+        }
+        swiper-slide:nth-child(1n) .card { background-color: rgb(206, 17, 17); }
+        swiper-slide:nth-child(2n) .card { background-color: rgb(0, 140, 255); }
+        swiper-slide:nth-child(3n) .card { background-color: rgb(10, 184, 111); }
+        swiper-slide:nth-child(4n) .card { background-color: rgb(211, 122, 7); }
+    </style>
 </head>
-
 <body>
     <div class="sidebar">
         <div class="menu-icon">
@@ -64,12 +42,26 @@
             <img src="{% static 'images/menu.svg' %}" id="menu" alt="Menu">
         </div>
         <div class="nav-icons">
-            <div class="icon" id="search"><img src="{% static 'images/search.svg' %}" alt="Search"></div>
-            <div class="icon" id="grid"><img src="{% static 'images/grid.svg' %}" alt="Dashboard"></div>
-            <div class="icon" id="user"><img src="{% static 'images/user.svg' %}" alt="Users"></div>
-            <div class="icon" id="settings"><img src="{% static 'images/settings.svg' %}" alt="Settings"></div>
-
-
+            <div class="icon" id="content" aria-label="Conteúdos">
+              <a href="#content">
+                <img src="{% static 'images/search.svg' %}" alt="Ícone de conteúdos">
+              </a>
+            </div>
+            <div class="icon" id="calendar" aria-label="Cronograma">
+              <a href="#calendar">
+                <img src="{% static 'images/grid.svg' %}" alt="Dashboard">
+              </a>
+            </div>
+            <div class="icon" id="user" aria-label="Perfil">
+              <a href="#">
+                <img src="{% static 'images/user.svg' %}" alt="Ícone de perfil">
+              </a>
+            </div>
+            <div class="icon" id="settings" aria-label="Configurações">
+              <a href="#">
+                <img src="{% static 'images/settings.svg' %}" alt="Ícone de configurações">
+              </a>
+            </div>
             <div class="active"></div>
         </div>
         <div class="logout-icon">
@@ -81,47 +73,48 @@
         <h1>Dashboard</h1>
 
         <div id="menu-sidebar">
-            <img src=" {% static 'images/menu.svg' %}" alt="Menu">
+            <img src="{% static 'images/menu.svg' %}" alt="Menu">
         </div>
 
         <section id="conteudos">
-          <h2>Conteúdos</h2>
-          <p>Arraste para o lado</p>
-          <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
-            <swiper-slide>
-              <div class="card">
-                <div class="card_load_extreme_title"></div>
-                <div class="card_load_extreme_descripion"></div>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="card">
-                <div class="card_load_extreme_title"></div>
-                <div class="card_load_extreme_descripion"></div>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="card">
-                <div class="card_load_extreme_title"></div>
-                <div class="card_load_extreme_descripion"></div>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="card">
-                <div class="card_load_extreme_title"></div>
-                <div class="card_load_extreme_descripion"></div>
-              </div>
-            </swiper-slide>
-          </swiper-container>
+            <h2>Conteúdos</h2>
+            <p>Arraste para o lado</p>
+
+            <div class="flex center justify-between flex-column">
+                <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+                    {% for _ in '1234'|make_list %}
+                    <swiper-slide>
+                        <div class="card">
+                            <div class="card_load_extreme_title"></div>
+                            <div class="card_load_extreme_descripion"></div>
+                        </div>
+                    </swiper-slide>
+                    {% endfor %}
+                </swiper-container>
+
+                <div class="progress">
+                    <h2>
+                        Progresso
+                    </h2>
+                    <div class="circular-progress">
+                        <span class="progress-value">0%</span>
+                    </div>
+                </div>
+                
+            </div>
         </section>
+
         <section id="calendar">
-          <h2>Cronograma de estudos</h2>
-          <iframe src="https://calendar.google.com/calendar/embed?src=fabriciopereiraleal2021%40gmail.com&ctz=America%2FSao_Paulo" style="border: 0" width="80%" frameborder="0" scrolling="no"></iframe>
+            <h2>Cronograma de estudos</h2>
+            <iframe src="https://calendar.google.com/calendar/embed?src=fabriciopereiraleal2021%40gmail.com&ctz=America%2FSao_Paulo"
+                    style="border: 0" width="100%" frameborder="0" scrolling="no">
+            </iframe>
         </section>
     </div>
 
     <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/progressbar.js' %}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </body>
-
 </html>
