@@ -52,6 +52,18 @@ section + section {
   z-index: 200;
 }
 
+button {
+ border: none;
+ outline: none;
+ background: #e4cebb;
+ width: 44px;
+ height: 44px;
+
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
 .active {
   height: 44px;
   width: 100%;

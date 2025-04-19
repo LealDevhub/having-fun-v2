@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar show">
         <div class="menu-icon">
             <img src="{% static 'images/logo1 1.png' %}" id="logo" alt="Logo">
             <img src="{% static 'images/menu.svg' %}" id="menu" alt="Menu">
@@ -65,7 +65,16 @@
             <div class="active"></div>
         </div>
         <div class="logout-icon">
-            <img src="{% static 'images/log-out.svg' %}" alt="Logout">
+            {% if user.is_authenticated %}
+            <form method="post" action="{% url 'aula:logout' %}">
+                {% csrf_token %}
+                <button
+                    type="submit"
+                    >
+                    <img src="{% static 'images/log-out.svg' %}" alt="Logout">
+                </button>
+            </form>
+            {% endif %}
         </div>
     </div>
 
