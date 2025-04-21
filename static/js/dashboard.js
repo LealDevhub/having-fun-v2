@@ -33,3 +33,16 @@ menu.addEventListener("click", () => {
 menu_sidebar.addEventListener("click" , () => {
     sidebar.classList.toggle("show")
 })
+
+/* Perfil profile */
+if(active.style.top == "108px") {
+    var section_conteudos = document.querySelector("#section-conteudos") 
+    var section_calendar = document.querySelector("#section-calendar")
+    
+    section_conteudos.style.display = "none";
+    section_calendar.style.display = "none"
+
+    var section_profile = document.querySelector("#section-profile")
+
+    section_profile.style.display = "block"
+}
