@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFECE0;
+    font-family: "Poppins", sans-serif;
+    color: #DD5348;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    max-width: 1145px;
+    width: 90%;
+    margin-inline: auto;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    & img {
+        width: 100px;
+    }
+}
+
+.btn-primary {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-color: #DD5348;
+    padding: 0.8125rem 3.125rem;
+    outline: none;
+    border: none;
+
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+.main-content {
+    padding-top: 100px;
+    max-width: 289px;
+    width: 90%;
+
+    margin-inline: auto;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    & fieldset {
+        border: none;
+    }
+
+    & form {
+        margin-bottom: 16px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & input {
+            width: 100%;
+            appearance: none;
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            border: 1px solid #d6d3d1;
+            font: 400 1rem/1.5 var(--font-family);
+        }
+
+        & button {
+            margin-top: 20px;
+        }
+    }
+
+}
+
+.divider {
+   height: 1px;
+   width: 100%;
+   margin-block: 16px 24px;
+   
+   background-color: rgba(128, 128, 128, 0.445);
+}
