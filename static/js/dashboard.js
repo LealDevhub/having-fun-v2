@@ -8,16 +8,35 @@ const sidebar = document.querySelector(".sidebar")
 const menu_sidebar = document.querySelector("#menu-sidebar")
 
 
-conteudos.addEventListener("click", () => {
+var section_conteudos = document.querySelector("#section-conteudos") 
+var section_calendar = document.querySelector("#section-calendar")
+var section_profile = document.querySelector("#section-profile")
+
+conteudos.addEventListener("click", () => { 
     active.style.top = "0"
+
+    section_conteudos.style.display = "block";
+    section_calendar.style.display = "none";
+
+    section_profile.style.display = "none";
 })
 
 cronograma.addEventListener("click", () => {
     active.style.top = "54px"
+
+    section_conteudos.style.display = "none";
+    section_calendar.style.display = "block";
+
+    section_profile.style.display = "none";
 })
 
 perfil.addEventListener("click", () => {
     active.style.top = "108px"
+    
+    section_conteudos.style.display = "none";
+    section_calendar.style.display = "none";
+
+    section_profile.style.display = "block";
 })
 
 configuracoes.addEventListener("click", () => {
@@ -35,14 +54,3 @@ menu_sidebar.addEventListener("click" , () => {
 })
 
 /* Perfil profile */
-if(active.style.top == "108px") {
-    var section_conteudos = document.querySelector("#section-conteudos") 
-    var section_calendar = document.querySelector("#section-calendar")
-    
-    section_conteudos.style.display = "none";
-    section_calendar.style.display = "none"
-
-    var section_profile = document.querySelector("#section-profile")
-
-    section_profile.style.display = "block"
-}

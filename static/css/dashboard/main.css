@@ -34,10 +34,6 @@ body {
   flex-direction: column;
 }
 
-section + section {
-  margin-top: 50px;
-}
-
 .sidebar {
   width: var(--width-sidebar);
   background-color: #f9a66c;
@@ -71,7 +67,7 @@ button {
   border-radius: 10px;
   position: absolute;
   z-index: 0;
-  top: 53px;
+  top: 0;
   transition: 0.4s;
 }
 
@@ -298,12 +294,18 @@ button {
   }
 }
 
+#section-calendar {
+  display: none;
+}
+
 #section-calendar iframe {
   width: 100%;
   height: 600px;
 }
 
-
+#section-profile {
+  display: none;
+}
 
 @media (max-width: 970px) {
   #menu-sidebar {
