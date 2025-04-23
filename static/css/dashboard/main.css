@@ -11,7 +11,7 @@
 }
 
 .justify-between {
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 30px;
 }
 
@@ -304,7 +304,175 @@ button {
 }
 
 #section-profile {
+   width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   display: none;
+}
+
+#section-settings {
+  display: none;
+}
+
+.configs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto ;
+}
+
+#theme-toggle-button {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 7em;
+  cursor: pointer;
+}
+
+/* Hide default HTML checkbox */
+#toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#container,
+#patches,
+#stars,
+#button,
+#sun,
+#moon,
+#cloud {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.25s;
+}
+
+/* night sky background */
+#toggle:checked + svg #container {
+  fill: #2b4360;
+}
+
+/* move button to right when checked */
+#toggle:checked + svg #button {
+  transform: translate(28px, 2.333px);
+}
+
+/* show/hide sun and moon based on checkbox state */
+#sun {
+  opacity: 1;
+}
+
+#toggle:checked + svg #sun {
+  opacity: 0;
+}
+
+#moon {
+  opacity: 0;
+}
+
+#toggle:checked + svg #moon {
+  opacity: 1;
+}
+
+/* show or hide background items on checkbox state */
+#cloud {
+  opacity: 1;
+}
+
+#toggle:checked + svg #cloud {
+  opacity: 0;
+}
+
+#stars {
+  opacity: 0;
+}
+
+#toggle:checked + svg #stars {
+  opacity: 1;
+}
+
+
+.profile-card {
+  margin-inline: auto;
+
+  background-color: #d94f3a;
+  width: 300px;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-image {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  margin-top: 60px;
+}
+
+.hashtag {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  color: #00ffc3;
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.start-label {
+  color: #fff;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+}
+
+.start-date {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.logo {
+  margin-top: 1.5rem;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 @media (max-width: 970px) {

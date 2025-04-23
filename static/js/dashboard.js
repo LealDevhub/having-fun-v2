@@ -11,6 +11,7 @@ const menu_sidebar = document.querySelector("#menu-sidebar")
 var section_conteudos = document.querySelector("#section-conteudos") 
 var section_calendar = document.querySelector("#section-calendar")
 var section_profile = document.querySelector("#section-profile")
+var section_settings = document.querySelector("#section-settings")
 
 conteudos.addEventListener("click", () => { 
     active.style.top = "0"
@@ -19,6 +20,7 @@ conteudos.addEventListener("click", () => {
     section_calendar.style.display = "none";
 
     section_profile.style.display = "none";
+    section_settings.style.display = "none";
 })
 
 cronograma.addEventListener("click", () => {
@@ -28,6 +30,7 @@ cronograma.addEventListener("click", () => {
     section_calendar.style.display = "block";
 
     section_profile.style.display = "none";
+    section_settings.style.display = "none";
 })
 
 perfil.addEventListener("click", () => {
@@ -37,10 +40,17 @@ perfil.addEventListener("click", () => {
     section_calendar.style.display = "none";
 
     section_profile.style.display = "block";
+    section_settings.style.display = "none";
 })
 
 configuracoes.addEventListener("click", () => {
     active.style.top = "162px"
+
+    section_conteudos.style.display = "none";
+    section_calendar.style.display = "none";
+
+    section_profile.style.display = "none";
+    section_settings.style.display = "block";
 })
 
 const menu = document.querySelector("#menu")
