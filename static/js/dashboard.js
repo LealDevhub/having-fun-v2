@@ -7,11 +7,19 @@ const sidebar = document.querySelector(".sidebar")
 
 const menu_sidebar = document.querySelector("#menu-sidebar")
 
-
 var section_conteudos = document.querySelector("#section-conteudos") 
 var section_calendar = document.querySelector("#section-calendar")
 var section_profile = document.querySelector("#section-profile")
 var section_settings = document.querySelector("#section-settings")
+
+var toggle_theme = document.querySelector('input[name="toggle_theme"]')
+
+toggle_theme.addEventListener("click" , () => {
+    var bg_dash = document.body
+    
+    bg_dash.classList.toggle("dark")
+
+})
 
 conteudos.addEventListener("click", () => { 
     active.style.top = "0"

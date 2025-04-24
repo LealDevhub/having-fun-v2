@@ -25,13 +25,20 @@
 }
 
 body {
+  --bg-color: #f5e3d7;
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   display: flex;
-  background-color: #f5e3d7;
+  background-color: var(--bg-color);
   flex-direction: column;
+}
+
+body.dark {
+  --bg-color: #d24d3e;
+  color: white;
 }
 
 .sidebar {
