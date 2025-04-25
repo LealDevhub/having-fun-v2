@@ -24,6 +24,8 @@ toggle_theme.addEventListener("click" , () => {
 conteudos.addEventListener("click", () => { 
     active.style.top = "0"
 
+    sidebar.classList.remove("show")
+
     section_conteudos.style.display = "block";
     section_calendar.style.display = "none";
 
@@ -33,6 +35,9 @@ conteudos.addEventListener("click", () => {
 
 cronograma.addEventListener("click", () => {
     active.style.top = "54px"
+
+    sidebar.classList.remove("show")
+
 
     section_conteudos.style.display = "none";
     section_calendar.style.display = "block";
@@ -44,6 +49,8 @@ cronograma.addEventListener("click", () => {
 perfil.addEventListener("click", () => {
     active.style.top = "108px"
     
+    sidebar.classList.remove("show")
+
     section_conteudos.style.display = "none";
     section_calendar.style.display = "none";
 
@@ -53,6 +60,8 @@ perfil.addEventListener("click", () => {
 
 configuracoes.addEventListener("click", () => {
     active.style.top = "162px"
+
+    sidebar.classList.remove("show")
 
     section_conteudos.style.display = "none";
     section_calendar.style.display = "none";
