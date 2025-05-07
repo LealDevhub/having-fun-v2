@@ -4,10 +4,12 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 LISTA_CATEGORIAS = (
-    ("ANALISES", "Análises"),
-    ("PROGRAMACAO", "Programação"),
-    ("APRESENTACAO", "Apresentação"),
-    ("OUTROS", "Outros"),
+    ("A1", "Iniciante"),
+    ("A2", "Básico"),
+    ("B1", "Intermediário"),
+    ("B2", "Intermediário avançado"),
+    ("C1", "Avançado"),
+    ("C2", "Proficiente")
 )
 
 # criar  aula

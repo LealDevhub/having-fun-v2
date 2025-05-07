@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #FFECE0;
+    padding: 10px;
+}
+
+.container {
+    max-width: 1145px;
+    width: 90%;
+    margin-inline: auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: .5rem;
+    transition: .3s;
+
+    &:hover {
+        filter: brightness(1.3);
+    }
+}
+
+a.limitar-texto {
+    display: inline-block;
+    max-width: 11ch; /* Limita visualmente a 11 caracteres */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+ul[role=list] {
+    list-style: none;
+
+    padding: 0;
+    padding-top: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        & a {
+            color: rgb(182, 182, 182);
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+
+}
+
+/* Estilo base: esconder o checkbox nativo */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../images/ambiente-aluno/checkbox-default.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Hover: troca a imagem ao passar o mouse */
+input[type="checkbox"]:hover {
+    background-image: url("../../images/ambiente-aluno/checkbox-hover.svg");
+}
+
+/* Checked: troca a imagem ao ser marcado */
+input[type="checkbox"]:checked {
+    background-image: url("../../images/ambiente-aluno/checkbox-checked.svg");
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #DD5348;
+    padding: 0.8125rem 3.125rem;
+}
+
+.btn-secondary {
+    color: #DD5348;
+    border: 2px solid #DD5348;
+    padding:  0.7rem 0.875rem;
+}
+
+
+main {
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: 400px 1fr;
+    gap: 15px;
+    background-color: #DD5348;
+    border-radius: 15px;
+    box-shadow:  13px 13px 21px #8b8b8b,
+             -13px -13px 21px #ffffff;
+}
+
+main section, main aside {
+    padding: 20px;
+}
+
+#player iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#classes {
+    button {
+        width: 100%;
+        padding: 15px 0 ;
+    }
+
+    div + button {
+        margin-top: 10px;
+    }
+}
+
+#materials {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
