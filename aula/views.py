@@ -41,7 +41,6 @@ class Detalhesaula(LoginRequiredMixin, DetailView):
     def get(self, request, *args, **kwargs):
         # contabilizar uma visualização
         aula = self.get_object()
-        aula.visualizacoes += 1
         aula.save()
         usuario = request.user
         usuario.aulas_vistos.add(aula)

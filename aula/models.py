@@ -15,10 +15,10 @@ LISTA_CATEGORIAS = (
 # criar  aula
 class Aula(models.Model):
     titulo = models.CharField(max_length=100)
-    thumb = models.ImageField(upload_to='thumb_aulas')
     descricao = models.TextField(max_length=1000)
+    link_do_video = models.CharField(max_length=300)
+    link_do_material = models.CharField(max_length=300)
     categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)
-    visualizacoes = models.IntegerField(default=0)
     data_criacao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

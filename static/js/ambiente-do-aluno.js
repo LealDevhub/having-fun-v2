@@ -11,12 +11,16 @@ function convertToEmbedLink(youtubeUrl) {
   }
   
   // Exemplo de uso
-  const url = "https://www.youtube.com/watch?v=DglM5TELu0k";
+  const link = document.querySelector("ul li a")
+  const url = link.getAttribute("aria-label")
   const embedUrl = convertToEmbedLink(url);
   
   const iframe = document.querySelector("iframe")
 
   iframe.src = String(embedUrl)
+
+  link.href = `/aulas/1?${embedUrl}`
+
 
 
   console.log(embedUrl); // https://www.youtube.com/embed/DglM5TELu0k

@@ -11,5 +11,5 @@ def lista_aulas_recentes(request):
 
 
 def lista_aulas_emalta(request):
-    lista_aulas = Aula.objects.all().order_by('-visualizacoes')[0:8]
+    lista_aulas = Aula.objects.all().order_by('-categoria')[0:8]
     return {"lista_aulas_emalta": lista_aulas}
