@@ -223,6 +223,11 @@ button {
   border-radius: 8px;
   position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  & img {
+    margin-inline: auto;
+    width: 100px;
+  }
 }
 
 .card_load,

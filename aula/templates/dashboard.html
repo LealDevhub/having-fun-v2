@@ -91,11 +91,12 @@
 
             <div class="flex center justify-between flex-column">
                 <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
-                    {% for _ in '1234'|make_list %}
+                    {% for aula in aulas_relacionados %}
                     <swiper-slide>
-                        <div class="card">
+                        
+                        <div class="card" ondblclick="direcionar_aula('{{ aula.link_do_video|escapejs }}', '{{ aula.titulo|escapejs }}', '{{ aula.descricao|escapejs }}', '{{ aula.link_do_material|escapejs }}')">
+                            <img src="{% static 'images/logo1 1.png' %}" alt="Logo Having Fun">
                             <div class="card_load_extreme_title"></div>
-                            <div class="card_load_extreme_descripion"></div>
                         </div>
                     </swiper-slide>
                     {% endfor %}
@@ -218,5 +219,13 @@
     <script src="{% static 'js/progressbar.js' %}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+    <script>
+        function direcionar_aula(link, titulo, descricao, link_do_material) {
+
+            
+            window.location.href = `/aulas/1?aula=${link}&titulo=${titulo}&descricao=${descricao}&link_material=${link_do_material}`;
+        }
+    </script>
 </body>
 </html>

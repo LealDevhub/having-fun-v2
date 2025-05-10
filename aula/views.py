@@ -30,7 +30,12 @@ class Homepage(FormView):
 class Homeaulas(LoginRequiredMixin, ListView):
     template_name = "dashboard.html"
     model = Aula
-    # object_list -> lista de itens do modelo
+    context_object_name = "aulas"  # nome acessível no template com {% for aula in aulas %}
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["aulas_relacionados"] = Aula.objects.all()  # todas as aulas
+        return context
 
 
 class Detalhesaula(LoginRequiredMixin, DetailView):

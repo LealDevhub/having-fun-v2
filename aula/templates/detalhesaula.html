@@ -55,7 +55,7 @@
                     {% for aula in aulas_relacionados %}
                     <li>
                         <input type="checkbox" id="video1">
-                        <a title="{{ aula.titulo }}" aria-label="{{ aula.link_do_video }}" class="limitar-texto" href="">{{ aula.titulo }}</a>
+                        <a title="{{ aula.titulo }}" class="limitar-texto" href="/aulas/1?aula={{ aula.link_do_video }}&titulo={{ aula.titulo }}&descricao={{ aula.descricao }}&link_material={{ aula.link_do_material }}">{{ aula.titulo }}</a>
                     </li>
                     {% endfor %}
                 </ul>
