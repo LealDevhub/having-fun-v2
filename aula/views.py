@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, reverse
 from .models import Aula, Usuario
 from .forms import CriarContaForm, FormHomepage
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
+from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 
@@ -55,7 +57,7 @@ class Detalhesaula(LoginRequiredMixin, DetailView):
         context = super(Detalhesaula, self).get_context_data(**kwargs)
         # filtrar a minha tabela de aulas pegando os aulas cuja categoria é igual a categoria do aula da página (object)
         # self.get_object()
-        aulas_relacionados = Aula.objects.filter(categoria=self.get_object().categoria)[0:5]
+        aulas_relacionados = Aula.objects.filter(categoria=self.get_object().categoria)
         context["aulas_relacionados"] = aulas_relacionados
         return context
 
@@ -96,6 +98,13 @@ class Criarconta(FormView):
 
     #def homepage(request):
      #   return render(request, "homepage.html")
+
+class Adcaula(CreateView):
+    model = Aula
+    fields = ['titulo', 'descricao', 'link_do_video', 'link_do_material', 'categoria', 'data_criacao']
+    template_name = 'adicionar-aula.html'
+    success_url = reverse_lazy('aula:dashboard')
+
 
 # url - view - html
     #def homeaulas(request):

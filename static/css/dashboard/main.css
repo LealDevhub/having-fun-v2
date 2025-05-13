@@ -222,22 +222,16 @@ button {
   padding: 12px 10px;
   border-radius: 8px;
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   & img {
     margin-inline: auto;
     width: 100px;
   }
-}
-
-.card_load,
-.card_load_extreme_title,
-.card_load_extreme_descripion {
-  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-  animation: load89234 2s infinite;
-  border-radius: 5px;
 }
 
 .card_load {
@@ -255,6 +249,11 @@ button {
   position: absolute;
   bottom: 10px;
   left: 12px;
+
+  & p {
+    font-size: 14px;
+    color: #d94f3a;
+  }
 }
 
 .card_load_extreme_descripion {

@@ -87,7 +87,7 @@
 
         <section id="section-conteudos">
             <h2>Conteúdos</h2>
-            <p>Arraste para o lado</p>
+            <p>Arraste para o lado (clique duas vezes no conteúdo desejado👆)</p>
 
             <div class="flex center justify-between flex-column">
                 <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
@@ -96,7 +96,9 @@
                         
                         <div class="card" ondblclick="direcionar_aula('{{ aula.link_do_video|escapejs }}', '{{ aula.titulo|escapejs }}', '{{ aula.descricao|escapejs }}', '{{ aula.link_do_material|escapejs }}')">
                             <img src="{% static 'images/logo1 1.png' %}" alt="Logo Having Fun">
-                            <div class="card_load_extreme_title"></div>
+                            <div class="card_load_extreme_title">
+                                <p style="color: #d94f3a; font-size: 16px;">{{ aula.titulo }}</p>
+                            </div>
                         </div>
                     </swiper-slide>
                     {% endfor %}
