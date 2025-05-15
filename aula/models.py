@@ -36,3 +36,4 @@ class Video(models.Model):
 
 class Usuario(AbstractUser):
     aulas_vistos = models.ManyToManyField("Aula")
+    categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS, default="A1")

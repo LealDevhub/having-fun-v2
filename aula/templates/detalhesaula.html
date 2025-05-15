@@ -54,7 +54,7 @@
                 <ul role="list">
                     {% for aula in aulas_relacionados %}
                     <li>
-                        <input type="checkbox" id="video1">
+                        <input type="checkbox" class="checkbox-aula" data-id="{{ aula.id }}" {% if aula in user.aulas_vistos.all %}checked{% endif %}>
                         <a title="{{ aula.titulo }}" class="limitar-texto" href="/aulas/1?aula={{ aula.link_do_video }}&titulo={{ aula.titulo }}&descricao={{ aula.descricao }}&link_material={{ aula.link_do_material }}">{{ aula.titulo }}</a>
                     </li>
                     {% endfor %}
@@ -80,5 +80,34 @@
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
 </body>
+
+    <script>
+    document.querySelectorAll('.checkbox-aula').forEach(function(checkbox) {
+    checkbox.addEventListener('change', function () {
+        const aulaId = this.dataset.id;
+        const csrfToken = '{{ csrf_token }}';
+        const concluido = this.checked ? 'marcar' : 'desmarcar';
+
+        fetch('/marcar-aula-concluida/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrfToken,
+            },
+            body: new URLSearchParams({
+                aula_id: aulaId,
+                acao: concluido
+            })
+        }).then(res => res.json())
+          .then(data => {
+              if (data.status === 'ok') {
+                  console.log(`Aula ${concluido === 'marcar' ? 'concluída' : 'removida'} com sucesso.`);
+              } else {
+                  alert('Erro ao atualizar aula.');
+              }
+          });
+    });
+});
+    </script>
 
 </html>

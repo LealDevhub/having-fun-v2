@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect, reverse
-from .models import Aula, Usuario
-from .forms import CriarContaForm, FormHomepage
+
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.views.generic.edit import CreateView
+from django.views.decorators.csrf import csrf_exempt
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
 from django.urls import reverse_lazy
+from .models import Aula, Usuario
+from .forms import CriarContaForm, FormHomepage
 
 
 
@@ -36,7 +42,25 @@ class Homeaulas(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["aulas_relacionados"] = Aula.objects.all()  # todas as aulas
+
+
+        usuario = self.request.user
+        categoria = usuario.categoria
+
+        aulas_categoria = Aula.objects.filter(categoria=categoria)
+
+        aulas_concluidas = usuario.aulas_vistos.filter(categoria=categoria)
+
+        total_aulas = aulas_categoria.count()
+        concluidas = aulas_concluidas.count()
+
+        progresso = 0
+        if total_aulas > 0:
+            progresso = round((concluidas / total_aulas) * 100)
+        
+        context["aulas_relacionados"] = aulas_categoria  # todas as aulas
+        context["progresso"] = progresso
+
         return context
 
 
@@ -55,9 +79,8 @@ class Detalhesaula(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Detalhesaula, self).get_context_data(**kwargs)
-        # filtrar a minha tabela de aulas pegando os aulas cuja categoria é igual a categoria do aula da página (object)
-        # self.get_object()
-        aulas_relacionados = Aula.objects.filter(categoria=self.get_object().categoria)
+        usuario = self.request.user
+        aulas_relacionados = Aula.objects.filter(categoria=usuario.categoria)
         context["aulas_relacionados"] = aulas_relacionados
         return context
 
@@ -87,23 +110,44 @@ class Paginaperfil(LoginRequiredMixin, UpdateView):
 
 class Criarconta(FormView):
     template_name = "criarconta.html"
+
+    #def homepage(request):
+     #   return render(request, "homepage.html")
+
+class FormCriarContaProfessor(FormView):
+    template_name = 'form-criar-conta-professor.html'
     form_class = CriarContaForm
+    success_url = reverse_lazy('aula:login')
 
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('aula:login')
-
-    #def homepage(request):
-     #   return render(request, "homepage.html")
 
 class Adcaula(CreateView):
     model = Aula
     fields = ['titulo', 'descricao', 'link_do_video', 'link_do_material', 'categoria', 'data_criacao']
     template_name = 'adicionar-aula.html'
     success_url = reverse_lazy('aula:dashboard')
+
+
+@csrf_exempt  # Apenas para testes locais, para produção use CSRF corretamente
+@login_required
+def marcar_aula_concluida(request):
+    if request.method == 'POST':
+        aula_id = request.POST.get('aula_id')
+        acao = request.POST.get('acao')  # 'marcar' ou 'desmarcar'
+        if aula_id and acao:
+            try:
+                aula = Aula.objects.get(id=aula_id)
+                if acao == 'marcar':
+                    request.user.aulas_vistos.add(aula)
+                elif acao == 'desmarcar':
+                    request.user.aulas_vistos.remove(aula)
+                return JsonResponse({'status': 'ok'})
+            except Aula.DoesNotExist:
+                return JsonResponse({'status': 'erro', 'mensagem': 'Aula não encontrada'})
+    return JsonResponse({'status': 'erro', 'mensagem': 'Requisição inválida'})
+
 
 
 # url - view - html

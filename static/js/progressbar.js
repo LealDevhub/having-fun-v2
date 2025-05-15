@@ -1,16 +1,16 @@
-let circularProgress =  document.querySelector(".circular-progress"), progressValue = document.querySelector('.progress-value')
+const progressValue = document.querySelector(".progress-value");
+const circularProgress = document.querySelector(".circular-progress");
 
-let progressStartValue = 0,
-    progressEndValue = 90,
-    speed= 20;
+if (progressValue && circularProgress) {
+    const endValue = parseInt(progressValue.textContent); // Ex: 70
+    let startValue = 0;
 
-let progress = setInterval(() => {
-    progressStartValue++
+    let progress = setInterval(() => {
+        if (startValue >= endValue) clearInterval(progress);
 
-    progressValue.textContent = `${progressStartValue}%`
-    circularProgress.style.background = `conic-gradient(#d24d3e ${progressStartValue * 3.6}deg, #ededed 0deg)`
+        progressValue.textContent = `${startValue}%`;
+        circularProgress.style.background = `conic-gradient(#d24d3e ${startValue * 3.6}deg, #ededed 0deg)`;
 
-    if(progressStartValue == progressEndValue) {
-        clearInterval(progress)
-    }
-}, speed)
+        startValue++;
+    }, 20);
+}
