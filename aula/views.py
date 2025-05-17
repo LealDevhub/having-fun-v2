@@ -108,7 +108,7 @@ class Paginaperfil(LoginRequiredMixin, UpdateView):
         return reverse('aula:dashboard')
 
 
-class Criarconta(FormView):
+class Criarconta(TemplateView):
     template_name = "criarconta.html"
 
     #def homepage(request):

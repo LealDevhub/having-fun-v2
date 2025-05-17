@@ -34,7 +34,4 @@ function convertToEmbedLink(youtubeUrl) {
   const iframe = document.querySelector("iframe")
 
   iframe.src = String(embedUrl)
-
-
-  window.history.replaceState({}, document.title, window.location.pathname)
    // https://www.youtube.com/embed/DglM5TELu0k
